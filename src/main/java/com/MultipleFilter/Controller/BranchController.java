@@ -2,6 +2,8 @@ package com.MultipleFilter.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +34,7 @@ public class BranchController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<?> addBranch(@RequestBody BranchDto dto) {
+	public ResponseEntity<?> addBranch(@Valid @RequestBody BranchDto dto) {
 		try {
 			impl.addBranch(dto);
 			return new ResponseEntity<>("branch added", HttpStatus.OK);
@@ -42,7 +44,7 @@ public class BranchController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> editBranch(@RequestBody BranchDto dto, @PathVariable Long id) {
+	public ResponseEntity<?> editBranch(@Valid @RequestBody BranchDto dto, @PathVariable Long id) {
 		try {
 			impl.updateBranch(dto, id);
 

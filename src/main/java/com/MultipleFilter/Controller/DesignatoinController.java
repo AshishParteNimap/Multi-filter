@@ -46,7 +46,7 @@ public class DesignatoinController {
 	}
 
 	@PutMapping()
-	public ResponseEntity<?> updateDesi(@RequestBody DesignationDto designationDto, @PathVariable Long id) {
+	public ResponseEntity<?> updateDesi(@Valid @RequestBody DesignationDto designationDto, @PathVariable Long id) {
 
 		try {
 			impl.updateDesignation(designationDto, id);

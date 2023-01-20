@@ -2,6 +2,8 @@ package com.MultipleFilter.Controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,7 @@ public class DepartementController {
 	}
 
 	@PostMapping()
-	public ResponseEntity<?> addDepartment(@RequestBody DepartmentDto dto) {
+	public ResponseEntity<?> addDepartment(@Valid @RequestBody DepartmentDto dto) {
 		try {
 			impl.addDepartment(dto);
 			return new ResponseEntity<>("departement added", HttpStatus.OK);
@@ -42,7 +44,7 @@ public class DepartementController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> editDepartment(@RequestBody DepartmentDto dto, @PathVariable Long id) {
+	public ResponseEntity<?> editDepartment(@Valid @RequestBody DepartmentDto dto, @PathVariable Long id) {
 		try {
 			impl.updateDepartment(dto, id);
 			return new ResponseEntity<>("departement updated", HttpStatus.OK);
